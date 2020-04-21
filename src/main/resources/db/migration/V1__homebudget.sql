@@ -95,7 +95,8 @@ create table participant
     password  varchar(255)                    not null,
     firstname varchar(255)                    not null,
     lastname  varchar(255),
-    email     varchar(255)                    not null
+    email     varchar(255)                    not null,
+	role      varchar(255)                    not null
 );
 
 comment on table participant is 'участник';
@@ -112,8 +113,8 @@ create unique index participant_id_uindex
 create unique index participant_login_uindex
     on participant (login);
 
-INSERT INTO participant (id, login, password, firstname, lastname, email) VALUES ('c7249965-96a5-4c7d-95bc-2d1de3a04d24', 'Olga', '1919', 'Ольга', 'Дмитренко', 'Dmitrenko.Olga@yandex.ru');
-INSERT INTO participant (id, login, password, firstname, lastname, email) VALUES ('25dd3ad6-d829-4012-9ae0-428fbbb1f6c0', 'Dias', '341', 'Игорь', 'Дмитренко', 'Dias64@mail.ru');
+INSERT INTO participant (id, login, password, firstname, lastname, email, role) VALUES ('c7249965-96a5-4c7d-95bc-2d1de3a04d24', 'Olga', '1919', 'Ольга', 'Дмитренко', 'Dmitrenko.Olga@yandex.ru', 'ROLE_CUSTOMER');
+INSERT INTO participant (id, login, password, firstname, lastname, email, role) VALUES ('25dd3ad6-d829-4012-9ae0-428fbbb1f6c0', 'Dias', '341', 'Игорь', 'Дмитренко', 'Dias64@mail.ru', 'ROLE_ADMIN');
 
 DROP TABLE IF EXISTS long_term_goal;
 

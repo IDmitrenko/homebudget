@@ -3,9 +3,12 @@ package ru.dias.homebudget.persistence.entities;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import ru.dias.homebudget.persistence.entities.enums.Role;
 import ru.dias.homebudget.persistence.entities.utils.PersistableEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 @Entity
@@ -25,4 +28,6 @@ public class Participant extends PersistableEntity {
 
     private String email;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }
