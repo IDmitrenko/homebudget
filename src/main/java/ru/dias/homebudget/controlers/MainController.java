@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.dias.homebudget.persistence.entities.Participant;
 import ru.dias.homebudget.services.ParticipantService;
+import ru.dias.homebudget.services.RemainsService;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
@@ -26,14 +27,15 @@ import java.util.stream.Collectors;
 public class MainController {
 
     private final ParticipantService participantService;
+    private final RemainsService remainsService;
 
-// Версия отбора через Репозиторий
     @GetMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
     public String index(Model model) {
-//        model.addAttribute("products", productService.findAll(category, minPrice, maxPrice, notAvailable));
+        model.addAttribute("listremains", remainsService.findAll());
         return "index";
     }
 
+/*
     @GetMapping("/admin")
     public String adminPage(Model model, Principal principal) {
 
@@ -41,10 +43,11 @@ public class MainController {
             return "redirect:/";
         }
 
-//        model.addAttribute("products", productService.findAll(null, null));
+        model.addAttribute("listremains", remainsService.findAll());
 
         return "admin";
     }
+*/
 
     @GetMapping("/profile")
     public String profilePage(Model model, Principal principal) {
@@ -60,46 +63,6 @@ public class MainController {
 
         return "profile";
     }
-
-/*
-    @PostMapping("/purchase")
-    public String finishOrderAndPay(String phone, String email, Principal principal, Model model) {
-
-        Shopuser shopuser = shopuserService.findByPhone(principal.getName());
-
-        Purchase purchase = Purchase.builder()
-                .shopuser(shopuser)
-                .products(cart.getCartRecords()
-                        .stream()
-                        .map(CartRecord::getProduct)
-                        .collect(Collectors.toList())
-                )
-                .price(cart.getPrice() + cart.getPayment().getFee())
-                .phone(phone)
-                .email(email)
-                .build();
-
-        model.addAttribute("purchase", purchaseService.makePurchase(purchase));
-
-        Mail mail = new Mail();
-        mail.setMailFrom("Интернет-магазин Super Shop");
-        mail.setMailTo(shopuser.getEmail());
-        mail.setMailSubject("antonshu.pro - password recovery");
-        String token = UUID.randomUUID().toString();
-        String url = "/user/changePassword?id=" +
-                shopuser.getId() + "&token=" + token;
-        StringBuilder mailBody = new StringBuilder();
-        mailBody.append("Learn How to reset password using Spring Boot!!!\n\n")
-                .append("For reset you pass go to: https://antonshu.pro:8023/app")
-                .append(url);
-        mail.setMailContent(mailBody.toString());
-        mailService.sendEmail(mail);
-
-        return "orderdone";
-
-    }
-*/
-
 
 /*
     @GetMapping(value = "/rev/{phone}", produces = MediaType.APPLICATION_JSON_VALUE)
