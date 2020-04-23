@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8"/>
-        <title>Super Shop</title>
+        <title>Home Budget</title>
         <link rel="stylesheet" th:href="@{../static/css/stylesheet.css}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -29,19 +29,6 @@
                     <th>Сумма</th>
                 </tr>
                 </thead>
-<!--
-                <tbody th:if="${reviews.size() > 0}">
-                <tr th:each="review, iterator : ${reviews}">
-                    &lt;!&ndash;/*@thymesVar id="review" type="ru.geekbrains.supershop.persistence.entities.Review"*/&ndash;&gt;
-                    <td th:text="${iterator.index + 1}"></td>
-                    <td>
-                        <img th:src="@{'/products/images/' + ${review.product.id}}" alt="" width="50px" height="50px" />
-                        <a th:href="@{'/products/' + ${review.product.id}}">[[ ${review.product.title} ]]</a>
-                    </td>
-                    <td th:text="${review.commentary}"></td>
-                </tr>
-                </tbody>
--->
             </table>
         </div>
     </body>

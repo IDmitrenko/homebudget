@@ -58,7 +58,6 @@ public class MainController {
 
         Participant participant = participantService.findByLogin(principal.getName());
 
-//        model.addAttribute("reviews", reviewService.getReviewsByShopuser(shopuser).orElse(new ArrayList<>()));
         model.addAttribute("participant", participant);
 
         return "profile";

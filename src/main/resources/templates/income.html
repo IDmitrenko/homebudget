@@ -2,47 +2,50 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.w3.org/1999/xhtml" lang="EN">
-    <head>
-        <meta charset="utf-8"/>
-        <title>Super Shop</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    </head>
-    <body>
-        <div class="container">
-            <br>
-            <div th:replace="~{navigation :: navigation(Home)}" />
-            <br>
-            <div style="text-align: center;">
-                <h1>Home Budget</h1>
-            </div>
+<head>
+    <meta charset="utf-8"/>
+    <title>Home Budget</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <br>
+    <div th:replace="~{navigation :: navigation(Home)}"/>
+    <br>
+    <div style="text-align: center;">
+        <h1>Home Budget</h1>
+    </div>
 
-            <hr>
+    <hr>
+    <div th:if="${listincome.size() > 0}">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th>#</th>
+                <th>Дата</th>
+                <th>Тип прихода</th>
+                <th>Участник</th>
+                <th>Сумма</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="income, iterator : ${listincome}">
+            <span>
+                 <td th:text="${iterator.index + 1}"/>
+                 <td th:text="${#dates.format(income.date, 'dd-MM-yyyy')}"/>
+                 <td th:text="${income.typeIncome.name}"/>
+                 <td th:text="${income.participant.firstName}"/>
+                 <td th:text="${income.amount}"/>
+            </span>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:unless="${listincome.size() == 0}">
+        <span text="Список прихода пуст." />
+    </div>
+    <hr>
+</div>
 
-            <table class="table table-hover">
-                <thead class="thead-dark">
-                <tr>
-                    <th>#</th>
-                    <th>Дата</th>
-                    <th>Тип прихода</th>
-                    <th>Участник</th>
-                    <th>Сумма</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="income, iterator : ${listincome}">
-                        <span>
-                            <td th:text="${iterator.index + 1}"/>
-                            <td th:text="${#dates.format(income.date, 'dd-MM-yyyy')}"/>
-                            <td th:text="${income.typeincome.name}"/>
-                            <td th:text="${income.participant.firstname}"/>
-                            <td th:text="${income.amount}"/>
-                        </span>
-                    </tr>
-                </tbody>
-            </table>
-            <hr>
-            </div>
-
-        </div>
-    </body>
+</body>
 </html>

@@ -16,10 +16,10 @@ import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.Date;
 
-@Slf4j
 @Controller
 @RequiredArgsConstructor
-@RequestMapping(name = "/income")
+@Slf4j
+@RequestMapping("/income")
 public class IncomeController {
 
     private final BudgetActionFactory actionFactory;
@@ -41,10 +41,11 @@ public class IncomeController {
         return "income";
     }
 
-    @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping
     public String showIncome(Model model) {
         model.addAttribute("listincome", incomeService.findAll());
         return "income";
     }
 
 }
+
