@@ -1,8 +1,6 @@
 package ru.dias.homebudget.persistence.entities;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import ru.dias.homebudget.persistence.entities.utils.PersistableEntity;
 
 import javax.persistence.*;
@@ -10,7 +8,9 @@ import java.util.Date;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "income")
 @EqualsAndHashCode(callSuper = true)
 public class Income extends PersistableEntity {

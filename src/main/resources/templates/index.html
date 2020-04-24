@@ -4,7 +4,7 @@
       xmlns:sec="http://www.w3.org/1999/xhtml" lang="EN">
     <head>
         <meta charset="utf-8"/>
-        <title>Super Shop</title>
+        <title>Home Budget</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     </head>
     <body>
@@ -18,7 +18,7 @@
 
             <hr>
 
-            <table class="table table-hover">
+            <table class="table table-hover" sec:authorize="isAuthenticated()">
                 <thead class="thead-dark">
                 <tr>
                     <th>#</th>
@@ -46,8 +46,6 @@
                 <div class="col-sm">
                     <a sec:authorize="hasRole('ADMIN')" class="nav-link" th:href="@{/admin}" th:text="admin">ADMIN</a>
                 </div>
-            </div>
-
         </div>
     </body>
 </html>

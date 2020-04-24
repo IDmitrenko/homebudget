@@ -93,8 +93,8 @@ create table participant
             primary key,
     login     varchar(255)                    not null,
     password  varchar(255)                    not null,
-    firstname varchar(255)                    not null,
-    lastname  varchar(255),
+    first_name varchar(255)                   not null,
+    last_name  varchar(255),
     email     varchar(255)                    not null,
 	role      varchar(255)                    not null
 );
@@ -112,9 +112,12 @@ create unique index participant_id_uindex
 
 create unique index participant_login_uindex
     on participant (login);
-
-INSERT INTO participant (id, login, password, firstname, lastname, email, role) VALUES ('c7249965-96a5-4c7d-95bc-2d1de3a04d24', 'Olga', '1919', 'Ольга', 'Дмитренко', 'Dmitrenko.Olga@yandex.ru', 'ROLE_CUSTOMER');
-INSERT INTO participant (id, login, password, firstname, lastname, email, role) VALUES ('25dd3ad6-d829-4012-9ae0-428fbbb1f6c0', 'Dias', '341', 'Игорь', 'Дмитренко', 'Dias64@mail.ru', 'ROLE_ADMIN');
+/*
+пароль admin
+ */
+INSERT INTO participant (id, login, password, first_name, last_name, email, role) VALUES ('c7249965-96a5-4c7d-95bc-2d1de3a04d24', 'Olga', '$2a$08$CbyfvmXvZdXJFY0A2Xmbz.mGXP/z/BfRNpS3wWLVR2CSRiIlBwMsK', 'Ольга', 'Дмитренко', 'Dmitrenko.Olga@yandex.ru', 'ROLE_CUSTOMER');
+INSERT INTO participant (id, login, password, first_name, last_name, email, role) VALUES ('25dd3ad6-d829-4012-9ae0-428fbbb1f6c0', 'Dias', '$2a$08$ALSCD..CwoFIplqLOmxf6eyQ.yIE.zwFoIvB5wBSqK6IAkGSSpSGS', 'Игорь', 'Дмитренко', 'Dias64@mail.ru', 'ROLE_ADMIN');
+INSERT INTO participant (id, login, password, first_name, last_name, email, role) VALUES ('234e4907-afda-4ca3-9e1f-5883c26609b6', 'anonymous', '$2a$08$Tr9q0XmfnIPFWg9GrYJVoOTeG.yTYPCHn9.OdCW2QW1QZwCUFGhJi', 'anonymous', 'anonymous', 'anonymous@yandex.ru', 'ROLE_CUSTOMER');
 
 DROP TABLE IF EXISTS long_term_goal;
 

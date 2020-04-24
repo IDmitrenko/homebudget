@@ -25,6 +25,10 @@ public class ParticipantService implements UserDetailsService {
         return participantRepository.findOneByLogin(login);
     }
 
+    public Participant getAnonymousUser() {
+        return participantRepository.findOneByLogin("anonymous");
+    }
+
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
