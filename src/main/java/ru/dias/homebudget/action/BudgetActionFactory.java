@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class BudgetActionFactory {
 
-    private final ActionExpense actionExpense;
+    private final BigExpenseDecorator actionExpense;
     private final ActionIncome actionIncome;
 
     public BudgetAction createAction(BudgetActionType type){
