@@ -7,9 +7,9 @@ import ru.dias.homebudget.persistence.entities.Expense;
 import ru.dias.homebudget.persistence.entities.LongTermGoal;
 import ru.dias.homebudget.persistence.entities.TypeExpense;
 import ru.dias.homebudget.persistence.repositories.LongTermGoalRepository;
-import ru.dias.homebudget.persistence.repositories.RemainsRepository;
 import ru.dias.homebudget.persistence.repositories.TypeExpenseRepository;
 import ru.dias.homebudget.services.ExpenseService;
+import ru.dias.homebudget.strategy.ExpenseValidationStrategy;
 
 @Component
 @Scope("prototype")
@@ -19,13 +19,12 @@ public class ActionExpense implements BudgetAction {
     private final ExpenseService expenseService;
     private final TypeExpenseRepository typeExpenseRepository;
     private final LongTermGoalRepository longTermGoalRepository;
-    private final RemainsRepository remainsRepository;
+    private final ExpenseValidationStrategy strategy;
 
     @Override
     public String action(ActionContext context) {
 
-// проверка на положительный остаток
-        if ((remainsRepository.obtainAmountByDate(context.getDate()) - context.getAmount()) >= 0) {
+        if (strategy.validate(context)) {
 
             TypeExpense typeExpense = typeExpenseRepository.findOneByName(context.getType());
             LongTermGoal longTermGoal = longTermGoalRepository.findOneByName(context.getLongTermGoal());
