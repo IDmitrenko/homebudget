@@ -3,10 +3,8 @@ package ru.dias.homebudget.action;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import ru.dias.homebudget.persistence.entities.Income;
 import ru.dias.homebudget.persistence.entities.TypeIncome;
 import ru.dias.homebudget.persistence.repositories.TypeIncomeRepository;
-import ru.dias.homebudget.services.IncomeService;
 
 @Component
 @Scope("prototype")
