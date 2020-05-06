@@ -14,9 +14,9 @@ public class BudgetActionFactory {
     public BudgetAction createAction(BudgetActionType type){
         switch (type){
             case INCOME:
-                return actionExpense;
-            case EXPENSE:
                 return actionIncome;
+            case EXPENSE:
+                return actionExpense;
         }
         throw new RuntimeException("Unknown type");
     }
