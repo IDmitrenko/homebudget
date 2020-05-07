@@ -5,6 +5,11 @@
     <head>
         <meta charset="utf-8"/>
         <title>Home Budget</title>
+
+        <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.css}"/>
+        <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css}"/>
+        <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+        <link th:rel="stylesheet" th:href="@{webjars/font-awesome/5.11.2/css/all.css} "/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     </head>
     <body>
@@ -35,7 +40,7 @@
                                     <a th:href="@{'/remains/' + ${remains.id}}">Обороты за день</a>
                                 </div>
                             </td>
-                            <td th:text="${#dates.format(remains.date, 'dd-MM-yyyy')}"/>
+                            <td th:text="${#dates.format(remains.date, 'dd.MM.yyyy')}"/>
                             <td th:text="${remains.amount}"/>
                         </span>
                     </tr>

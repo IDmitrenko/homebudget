@@ -23,7 +23,7 @@ public class ExpenseController {
                 .action(new ActionContext()
                 .builder()
                 .type(expenseDto.getTypeExpense().getName())
-                .participant(expenseDto.getParticipant())
+                .participant(expenseDto.getParticipant().getLogin())
                 .date(expenseDto.getDate())
                 .amount(expenseDto.getAmount())
                 .comment(expenseDto.getComment())

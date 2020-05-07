@@ -18,7 +18,7 @@ public class ActionContext {
 
     private double amount;
 
-    private Participant participant;
+    private String participant;
 
     private String type;
 

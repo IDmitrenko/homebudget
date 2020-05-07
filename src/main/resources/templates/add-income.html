@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml" lang="EN">
+<head>
+    <title>Add Income</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.css}"/>
+    <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css}"/>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{webjars/font-awesome/5.11.2/css/all.css} "/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+
+    <body>
+    <div class="container">
+        <form th:action="@{/income/add}" th:object="${income}" method="post">
+            <div class="form-group row">
+                <div class="col-md-4 mt-5">
+                    <label for="date">Date income</label>
+                    <div class="input-group date">
+                        <input th:type="text" class="form-control" id="date" autocomplete="off" th:field="*{date}"/>
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            Participant   : <input th:type="text" th:field="*{participant.login}"/>
+            <br>
+            <br>
+            TypeIncome    : <input th:type="text" th:field="*{typeIncome.name}"/>
+            <br>
+            <br>
+            Amount        : <input th:type="text" th:field="*{amount}"/>
+            <br>
+            <br>
+            <button class="btn btn-primary" name="addIncome" type="submit">Add Income</button>
+
+        </form>
+    </div>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{assets/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script>
+
+    <script>
+        $('.input-group.date').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+    </script>
+
+    </body>
+</html>
